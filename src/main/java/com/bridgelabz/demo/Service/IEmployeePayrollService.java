@@ -8,13 +8,13 @@ import com.bridgelabz.demo.model.EmployeePayrollData;
 public interface IEmployeePayrollService {
 	List<EmployeePayrollData> getEmployeePayrollData();
 
-	EmployeePayrollData getEmployeePayrollDataById(String token);
+	EmployeePayrollData getEmployeePayrollDataById(long id);
 
 	EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO);
 
-	EmployeePayrollData updateEmployeePayrollData(String token,EmployeePayrollDTO employeePayrollDTO);
+	EmployeePayrollData updateEmployeePayrollData(long id,EmployeePayrollDTO employeePayrollDTO);
 
-	void deleteEmployeePayrollData(String token);
+	void deleteEmployeePayrollData(long id);
     List<EmployeePayrollData> getEmployeesPayrollDataByDepartment(String department);
     List<EmployeePayrollData> getEmployeesPayrollDataByGender(String gender);
 

@@ -4,8 +4,6 @@ package com.bridgelabz.demo.Service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import com.bridgelabz.demo.dto.EmployeePayrollDTO;
 import com.bridgelabz.demo.model.EmployeePayrollData;
 import com.bridgelabz.demo.Exceptions.EmployeePayrollException;
@@ -29,28 +27,28 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 	}
 
 	@Override
-	public EmployeePayrollData getEmployeePayrollDataById(String token) {
+	public EmployeePayrollData getEmployeePayrollDataById(long id) {
 		
-		return employeePayrollRepository.findById(tokenUtil.decodeToken(token))
-                .orElseThrow(() -> new EmployeePayrollException("Employee With employeeId: " + tokenUtil.decodeToken(token) + " does not exists"));
+		return employeePayrollRepository.findById(id)
+                .orElseThrow(() -> new EmployeePayrollException("Employee With employeeId: " + id + " does not exists"));
 	}
 
 	@Override
-	public EmployeePayrollData createEmployeePayrollData(@RequestBody EmployeePayrollDTO empPayrollDTO) {
+	public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData empData = new EmployeePayrollData(empPayrollDTO);
         return employeePayrollRepository.save(empData);
 	}
 
 	@Override
-	public EmployeePayrollData updateEmployeePayrollData(@RequestHeader String token,@RequestBody EmployeePayrollDTO empPayrollDTO) {
-		EmployeePayrollData empData = this.getEmployeePayrollDataById(token);
+	public EmployeePayrollData updateEmployeePayrollData(long id,EmployeePayrollDTO empPayrollDTO) {
+		EmployeePayrollData empData = this.getEmployeePayrollDataById(id);
 		empData.updateEmployeePayollData(empPayrollDTO);
         return employeePayrollRepository.save(empData);
 	}
 
 	@Override
-	public void deleteEmployeePayrollData(String token) {
-		 EmployeePayrollData empData = this.getEmployeePayrollDataById(token);
+	public void deleteEmployeePayrollData(long id) {
+		 EmployeePayrollData empData = this.getEmployeePayrollDataById(id);
 	        employeePayrollRepository.delete(empData);
 	}
 

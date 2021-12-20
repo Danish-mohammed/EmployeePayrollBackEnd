@@ -14,7 +14,7 @@ public class TokenUtil {
 	
 	public final String TOKEN_SECRET = "Mohammed";
 
-    public String createToken(int id) {
+    public String createToken(Long id) {
         try {
             Algorithm alogirthm = Algorithm.HMAC256(TOKEN_SECRET);
 

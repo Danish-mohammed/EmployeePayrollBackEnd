@@ -3,7 +3,7 @@ package com.bridgelabz.demo.dto;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import com.fasterxml.jackson.annotation.JsonFormat;
+// import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.ToString;
 import javax.validation.constraints.*;
 import java.util.List;
@@ -22,7 +22,7 @@ public class EmployeePayrollDTO {
 	@Pattern(regexp = "male|female", message = " Gender  needs to be male or female")
 	public String gender;
 	
-	@JsonFormat(pattern = "dd MMM yyyy")
+	// @JsonFormat(pattern = "dd MMM yyyy")
 	// @NotNull(message = "Startdate should not be empty")
 	// @PastOrPresent(message = "startDate shuld be past or todays date")
 	public String startDate;
